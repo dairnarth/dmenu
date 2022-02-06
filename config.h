@@ -27,4 +27,4 @@ static const char worddelimiters[] = " ";
 static unsigned int preselected = 0;
 
 /* Size of the window border */
-static const unsigned int border_width = 5;
+static const unsigned int border_width = 1;
