@@ -140,7 +140,7 @@ drawitem(struct item *item, int x, int y, int w)
 	return drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
 }
 
-static void
+static int
 recalculatenumbers()
 {
 	unsigned int numer = 0, denom = 0;
@@ -153,6 +153,7 @@ recalculatenumbers()
 	for (item = items; item && item->text; item++)
 		denom++;
 	snprintf(numbers, NUMBERSBUFSIZE, "%d/%d", numer, denom);
+    return denom;
 }
 
 static void
@@ -839,6 +840,8 @@ main(int argc, char *argv[])
 {
 	XWindowAttributes wa;
 	int i, fast = 0;
+
+    lines = MAX(recalculatenumbers(), 15);
 
 	for (i = 1; i < argc; i++)
 		/* these options take no arguments */
